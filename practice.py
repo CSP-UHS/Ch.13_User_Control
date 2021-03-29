@@ -15,10 +15,14 @@ class Ball:
     def draw_ball(self):
         arcade.draw_circle_filled(self.x,self.y,self.r,self.c)
 
-    # def update_ball(self):
-    #     self.x+= self.dx
-    #     self.y+= self.dy
+    def update_ball(self):
+        self.x+= self.dx
+        self.y+= self.dy
 
+        if self.x <= self.r or self.x >= SW - self.r:
+            self.dx *= -1
+        if self.y <= self.r or self.y >= SH - self.r:
+            self.dy *= -1
 
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
@@ -31,13 +35,24 @@ class MyGame(arcade.Window):
         arcade.start_render()
         self.ball.draw_ball()
 
-    # def on_update(self, dt):
-    #     self.ball.update_ball()
+    def on_update(self, dt):
+        self.ball.update_ball()
 
     def on_mouse_motion(self, x, y, dx, dy):
         self.ball.x=x
         self.ball.y=y
 
+    def on_mouse_press(self, x, y, button, modifiers):
+        if button == arcade.MOUSE_BUTTON_LEFT:
+            print("Left mouse clicked at",x,y)
+        elif button == arcade.MOUSE_BUTTON_RIGHT:
+            print("Right mouse clicked at",x,y)
+
+    def on_key_press(self, key, modifiers):
+        if key == arcade.key.LEFT:
+            print("left key pressed")
+        elif key ==arcade.key.RIGHT:
+            print("right key pressed")
 
 def main():
     window = MyGame(SW, SH, "Mouse control")
