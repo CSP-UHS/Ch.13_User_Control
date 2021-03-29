@@ -15,14 +15,15 @@ class Ball:
     def draw_ball(self):
         arcade.draw_circle_filled(self.x,self.y,self.r,self.c)
 
-    def update_ball(self):
-        self.x+= self.dx
-        self.y+= self.dy
+    # def update_ball(self):
+    #     self.x+= self.dx
+    #     self.y+= self.dy
 
 
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
-        super().__init__(width,height, title)
+        super().__init__(width, height, title)
+        self.set_mouse_visible(False)
         arcade.set_background_color(arcade.color.WHITE)
         self.ball = Ball(320,240,3,-2,15,arcade.color.ARMY_GREEN)
 
@@ -30,11 +31,16 @@ class MyGame(arcade.Window):
         arcade.start_render()
         self.ball.draw_ball()
 
-    def on_update(self, dt):
-        self.ball.update_ball()
+    # def on_update(self, dt):
+    #     self.ball.update_ball()
+
+    def on_mouse_motion(self, x, y, dx, dy):
+        self.ball.x=x
+        self.ball.y=y
+
 
 def main():
-    window = MyGame(SW, SH, "Window")
+    window = MyGame(SW, SH, "Mouse control")
     arcade.run()
 
 
