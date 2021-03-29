@@ -29,7 +29,7 @@ class MyGame(arcade.Window):
         super().__init__(width, height, title)
         self.set_mouse_visible(False)
         arcade.set_background_color(arcade.color.WHITE)
-        self.ball = Ball(320,240,3,-2,15,arcade.color.ARMY_GREEN)
+        self.ball = Ball(320,240,0,0,15,arcade.color.ARMY_GREEN)
 
     def on_draw(self):
         arcade.start_render()
@@ -50,9 +50,11 @@ class MyGame(arcade.Window):
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.LEFT:
-            print("left key pressed")
+            self.ball.dx=-4
         elif key ==arcade.key.RIGHT:
-            print("right key pressed")
+            self.ball.dx=4
+
+
 
 def main():
     window = MyGame(SW, SH, "Mouse control")
