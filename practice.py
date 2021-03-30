@@ -1,7 +1,7 @@
 import arcade
 
-SW=640
-SH=480
+SW=600
+SH=400
 
 class Ball:
     def __init__(self,x,y,dx,dy,r,c):
@@ -11,7 +11,7 @@ class Ball:
         self.dy=dy
         self.r=r
         self.c=c
-
+        self.laser_sound = arcade.load_sound("laser.mp3")
     def draw_ball(self):
         arcade.draw_circle_filled(self.x,self.y,self.r,self.c)
 
@@ -23,15 +23,19 @@ class Ball:
         if self.x < self.r:
             self.dx = 0
             self.x= self.r
+            arcade.play_sound(self.laser_sound,5)
         elif self.x > SW - self.r:
             self.dx = 0
             self.x = SW - self.r
+            arcade.play_sound(self.laser_sound,5)
         if self.y < self.r:
             self.dy = 0
             self.y = self.r
+            arcade.play_sound(self.laser_sound,5)
         elif self.y > SH - self.r:
             self.dy = 0
             self.y = SH - self.r
+            arcade.play_sound(self.laser_sound,5)
 
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
