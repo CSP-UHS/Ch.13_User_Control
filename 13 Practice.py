@@ -61,6 +61,12 @@ class MyGame(arcade.Window):
         elif key == arcade.key.DOWN:
             self.ball.dy = -4
 
+    def on_key_release(self, key, modifiers):
+        if key == arcade.key.LEFT or key == arcade.key.RIGHT:
+            self.ball.dx = 0
+        elif key == arcade.key.UP or key == arcade.key.DOWN:
+            self.ball.dy = 0
+
 
 def main():
     window = MyGame(SW, SH, "Mouse Control Example")
