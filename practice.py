@@ -19,10 +19,19 @@ class Ball:
         self.x+= self.dx
         self.y+= self.dy
 
-        if self.x <= self.r or self.x >= SW - self.r:
-            self.dx *= -1
-        if self.y <= self.r or self.y >= SH - self.r:
-            self.dy *= -1
+
+        if self.x < self.r:
+            self.dx = 0
+            self.x= self.r
+        elif self.x > SW - self.r:
+            self.dx = 0
+            self.x = SW - self.r
+        if self.y < self.r:
+            self.dy = 0
+            self.y = self.r
+        elif self.y > SH - self.r:
+            self.dy = 0
+            self.y = SH - self.r
 
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
@@ -53,7 +62,16 @@ class MyGame(arcade.Window):
             self.ball.dx=-4
         elif key ==arcade.key.RIGHT:
             self.ball.dx=4
+        elif key == arcade.key.UP:
+            self.ball.dy=4
+        elif key == arcade.key.DOWN:
+            self.ball.dy=-4
 
+    def on_key_release(self, key, modifiers):
+        if key == arcade.key.LEFT or key == arcade.key.RIGHT:
+            self.ball.dx = 0
+        elif key == arcade.key.UP or key == arcade.key.DOWN:
+            self.ball.dy = 0
 
 
 def main():
