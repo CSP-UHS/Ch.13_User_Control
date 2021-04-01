@@ -38,21 +38,21 @@ class Box:
         self.y+= self.dy
 
 
-        if self.x < self.w:
+        if self.x < self.w//2:
             self.dx = 0
-            self.x= self.w
+            self.x= self.w//2
             arcade.play_sound(self.laser_sound,5)
-        elif self.x > SW - self.w:
+        elif self.x >= SW - self.w//2:
             self.dx = 0
-            self.x = SW - self.w
+            self.x = SW - self.w//2
             arcade.play_sound(self.laser_sound,5)
-        if self.y < self.w:
+        if self.y < self.w//2:
             self.dy = 0
-            self.y = self.w
+            self.y = self.w//2
             arcade.play_sound(self.laser_sound,5)
-        elif self.y > SH - self.w:
+        elif self.y > SH - self.w//2:
             self.dy = 0
-            self.y = SH - self.w
+            self.y = SH - self.w//2
             arcade.play_sound(self.laser_sound,5)
 
 class Box_2(Box):
@@ -73,21 +73,21 @@ class Box_2(Box):
         self.y+= self.dy
 
 
-        if self.x < self.w:
+        if self.x < self.w//2:
             self.dx = 0
-            self.x= self.w
+            self.x= self.w//2
             arcade.play_sound(self.explosion_sound,5)
-        elif self.x > SW - self.w:
+        elif self.x > SW - self.w//2:
             self.dx = 0
-            self.x = SW - self.w
+            self.x = SW - self.w//2
             arcade.play_sound(self.explosion_sound,5)
-        if self.y < self.w:
+        if self.y < self.w//2:
             self.dy = 0
-            self.y = self.w
+            self.y = self.w//2
             arcade.play_sound(self.explosion_sound,5)
-        elif self.y > SH - self.w:
+        elif self.y > SH - self.w//2:
             self.dy = 0
-            self.y = SH - self.w
+            self.y = SH - self.w//2
             arcade.play_sound(self.explosion_sound,5)
 
 class MyGame(arcade.Window):
