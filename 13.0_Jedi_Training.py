@@ -55,8 +55,9 @@ class Box:
             self.y = SH - self.w
             arcade.play_sound(self.laser_sound,5)
 
-class Box_2:
+class Box_2(Box):
     def __init__(self,x,y,dx,dy,w,c):
+        super().__init__(x,y,dx,dy,w,c)
         self.x=x
         self.y=y
         self.dx=dx
@@ -67,7 +68,7 @@ class Box_2:
     def draw_box2(self):
         arcade.draw_rectangle_filled(self.x,self.y,self.w,self.w,self.c)
 
-    def update_box2(self):
+    def update_box_2(self):
         self.x+= self.dx
         self.y+= self.dy
 
@@ -94,22 +95,17 @@ class MyGame(arcade.Window):
         super().__init__(width, height, title)
         self.set_mouse_visible(False)
         arcade.set_background_color(arcade.color.WHITE)
-        self.box = Box(320,240,0,0,30,arcade.color.BLUE)
-        self.box2 = Box_2(320,240,0,0,30,arcade.color.RED)
+        self.box = Box(60,60,0,0,30,arcade.color.BLUE)
+        self.box2 = Box_2(440,440,0,0,30,arcade.color.RED)
 
     def on_draw(self):
         arcade.start_render()
         self.box.draw_box()
+        self.box2.draw_box2()
 
     def on_update(self, dt):
         self.box.update_box()
-
-    def on_draw2(self):
-        arcade.start_render()
-        self.box2.draw_box2()
-
-    def on_update2(self, dt):
-        self.box2.update_box2()
+        self.box2.update_box()
 
 
     def on_key_press(self, key, modifiers):
@@ -124,11 +120,11 @@ class MyGame(arcade.Window):
         if key == arcade.key.A:
             self.box2.dx=-3
         elif key == arcade.key.D:
-            self.box.dx=3
+            self.box2.dx=3
         elif key == arcade.key.W:
-            self.box.dy=3
+            self.box2.dy=3
         elif key == arcade.key.S:
-            self.box.dy=-3
+            self.box2.dy=-3
 
     def on_key_release(self, key, modifiers):
         if key == arcade.key.LEFT or key == arcade.key.RIGHT:
@@ -136,10 +132,10 @@ class MyGame(arcade.Window):
         elif key == arcade.key.UP or key == arcade.key.DOWN:
             self.box.dy = 0
         if key == arcade.key.A or key == arcade.key.D:
-            self.box.dx = 0
+            self.box2.dx = 0
         elif key == arcade.key.W or key == arcade.key.S:
-            self.box.dy = 0
-            a
+            self.box2.dy = 0
+
 def main():
     window = MyGame(SW, SH, "Mouse control")
     arcade.run()
