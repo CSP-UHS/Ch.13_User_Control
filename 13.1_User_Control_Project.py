@@ -19,8 +19,10 @@ import arcade
 
 SW=500
 SH=400
-point_list=((100,30),(120,30),(120,200),(60,200),(60,340),(270,340),(270,400),(250,400),(250,360),(40,360)
+point_list=((100,90),(120,90),(120,200),(60,200),(60,340),(270,340),(270,400),(250,400),(250,360),(40,360)
             ,(40,240),(40,180),(60,180),(100,180))
+point_list2=((450,0),(450,60),(430,60),(350,60),(350,360),(330,360),(330,280),(120,280),(120,260),(200,260),(200,140)
+             ,(280,140),(280,160),(220,160),(220,260),(330,260),(330,40),(430,40),(430,0))
 
 class Ball:
     def __init__(self,x,y,dx,dy,r,c):
@@ -66,6 +68,9 @@ class MyGame(arcade.Window):
         arcade.start_render()
         self.ball.draw_ball()
         arcade.draw_polygon_filled(point_list,arcade.color.BLACK)
+        arcade.draw_rectangle_filled(430,250,20,300,arcade.color.BLACK)
+        arcade.draw_polygon_filled(point_list2,arcade.color.BLACK)
+        arcade.draw_rectangle_filled(190,40,20,80,arcade.color.BLACK)
 
     def on_update(self, dt):
         self.ball.update_ball()
