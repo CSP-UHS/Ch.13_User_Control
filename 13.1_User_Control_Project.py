@@ -12,13 +12,15 @@ Type the directions to this project below:
 
 DIRECTIONS:
 ----------
-Please type directions for this game here.
+Move through maze to get to the top right corner.
 
 '''
 import arcade
 
-SW=600
+SW=500
 SH=400
+point_list=((100,30),(120,30),(120,200),(60,200),(60,340),(270,340),(270,400),(250,400),(250,360),(40,360)
+            ,(40,240),(40,180),(60,180),(100,180))
 
 class Ball:
     def __init__(self,x,y,dx,dy,r,c):
@@ -57,13 +59,13 @@ class Ball:
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
-        self.set_mouse_visible(False)
         arcade.set_background_color(arcade.color.WHITE)
-        self.ball = Ball(320,240,0,0,15,arcade.color.ARMY_GREEN)
+        self.ball = Ball(20,20,0,0,15,arcade.color.ARMY_GREEN)
 
     def on_draw(self):
         arcade.start_render()
         self.ball.draw_ball()
+        arcade.draw_polygon_filled(point_list,arcade.color.BLACK)
 
     def on_update(self, dt):
         self.ball.update_ball()
