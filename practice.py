@@ -11,7 +11,7 @@ class Ball:
         self.dy=dy
         self.r=r
         self.c=c
-        self.laser_sound = arcade.load_sound("laser.mp3")
+        self.laser_sound = arcade.load_sound("explosion.mp3")
     def draw_ball(self):
         arcade.draw_circle_filled(self.x,self.y,self.r,self.c)
 

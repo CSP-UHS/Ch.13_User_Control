@@ -105,7 +105,7 @@ class MyGame(arcade.Window):
 
     def on_update(self, dt):
         self.box.update_box()
-        self.box2.update_box()
+        self.box2.update_box_2()
 
 
     def on_key_press(self, key, modifiers):
