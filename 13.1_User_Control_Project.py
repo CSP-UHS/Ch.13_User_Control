@@ -58,7 +58,7 @@ class player:
             self.y = SH
             arcade.play_sound(self.laser_sound,5)
 
-        if self.x==480 and self.y==380:
+        if self.x>=480 and self.y>=380:
             print("You win")
 
 class MyGame(arcade.Window):
