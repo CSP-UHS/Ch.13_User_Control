@@ -34,28 +34,28 @@ class Ball:
         self.c=c
         self.laser_sound = arcade.load_sound("explosion.mp3")
     def draw_ball(self):
-        arcade.draw_circle_filled(self.x,self.y,self.r,self.c)
+        arcade.draw_triangle_filled(self.x,self.y,self.x-10,self.y-20,self.x+10,self.y-20,self.c)
 
     def update_ball(self):
         self.x+= self.dx
         self.y+= self.dy
 
 
-        if self.x < self.r:
+        if self.x < 10:
             self.dx = 0
-            self.x= self.r
+            self.x = 10
             arcade.play_sound(self.laser_sound,5)
-        elif self.x > SW - self.r:
+        elif self.x > SW:
             self.dx = 0
-            self.x = SW - self.r
+            self.x = SW-10
             arcade.play_sound(self.laser_sound,5)
-        if self.y < self.r:
+        if self.y < 20:
             self.dy = 0
-            self.y = self.r
+            self.y = 20
             arcade.play_sound(self.laser_sound,5)
-        elif self.y > SH - self.r:
+        elif self.y > SH:
             self.dy = 0
-            self.y = SH - self.r
+            self.y = SH
             arcade.play_sound(self.laser_sound,5)
 
 class MyGame(arcade.Window):
