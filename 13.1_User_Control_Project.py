@@ -58,8 +58,60 @@ class player:
             self.y = SH
             arcade.play_sound(self.laser_sound,5)
 
-        if self.x>=480 and self.y>=380:
+        if self.x>=430 and self.y>=380:
             print("You win")
+
+        if self.x>=180 and self.x-10<=200 and self.y>=0 and self.y-20<=80:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        if self.x>=100 and self.x<=120 and self.y>=100 and self.y-20<=200:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=40 and self.x<=100 and self.y>=180 and self.y-20<=200:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=40 and self.x<=60 and self.y>=200 and self.y-20<=360:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=40 and self.x<=270 and self.y>=340 and self.y-20<=360:
+            self.x=20
+            self.y=30
+        elif self.x>=250 and self.x<=270 and self.y>=360 and self.y-20<=400:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        if self.x>=420 and self.x<=450 and self.y>=100 and self.y-20<=400:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        if self.x>=430 and self.x<=450 and self.y>=0 and self.y-20<=60:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=330 and self.x<=430 and self.y>=40 and self.y-20<=60:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=330 and self.x<=350 and self.y>=60 and self.y-20<=360:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=120 and self.x<=330 and self.y>=260 and self.y-20<=280:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=200 and self.x<=220 and self.y>=140 and self.y-20<=260:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
+        elif self.x>=200 and self.x<=280 and self.y>=140 and self.y-20<=260:
+            self.x=20
+            self.y=30
+            arcade.play_sound(self.laser_sound, 5)
 
 class MyGame(arcade.Window):
     def __init__(self, width, height, title):
