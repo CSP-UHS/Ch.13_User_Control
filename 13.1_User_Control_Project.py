@@ -80,6 +80,7 @@ class player:
         elif self.x>=40 and self.x<=270 and self.y>=340 and self.y-20<=360:
             self.x=20
             self.y=30
+            arcade.play_sound(self.laser_sound, 5)
         elif self.x>=250 and self.x<=270 and self.y>=360 and self.y-20<=400:
             self.x=20
             self.y=30
