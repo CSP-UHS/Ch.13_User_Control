@@ -107,9 +107,6 @@ class MyGame(arcade.Window):
 
 
 
-
-
-
 def main():
     my_window = MyGame(sw, sh, "mouse control")
 
