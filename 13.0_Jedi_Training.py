@@ -41,21 +41,21 @@ class Box:
         self.x += self.dx
         self.y += self.dy
 
-        if self.x < self.side:
+        if self.x < self.side/2:
             self.dx = 0
-            self.x = self.side
+            self.x = self.side/2
            # arcade.play_sound(self.cat)
-        elif self.x > sw - self.side:
+        elif self.x > sw - self.side/2:
             self.dx = 0
-            self.x = sw - self.side
+            self.x = sw - self.side/2
            # arcade.play_sound(self.cat)
-        if self.y < self.side:
+        if self.y < self.side/2:
             self.dy = 0
-            self.y = self.side
+            self.y = self.side/2
            # arcade.play_sound(self.cat)
-        elif self.y > sh - self.side:
+        elif self.y > sh - self.side/2:
             self.y = 0
-            self.y = sh - self.side
+            self.y = sh - self.side/2
            # arcade.play_sound(self.cat)
 
 
