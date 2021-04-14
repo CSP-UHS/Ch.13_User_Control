@@ -36,7 +36,10 @@ class Box():
         self.CS = CS
         self.dx = 0
         self.dy = 0
-        self.wallhit = arcade.load_sound("laser.mp3")
+        if c == arcade.color.BLUE:
+            self.wallhit = arcade.load_sound("laser.mp3")
+        else:
+            self.wallhit = arcade.load_sound("explosion.mp3")
 
     def control(self,key):
         #print(key)
@@ -84,27 +87,27 @@ class Box():
 
 
     def drawbox(self):
-        arcade.draw_rectangle_filled(self.x,self.y,2*self.r,2*self.r,self.color)
+        arcade.draw_rectangle_filled(self.x,self.y,self.r,self.r,self.color)
 
     def updatebox(self):
 
         self.x += self.dx
         self.y += self.dy
 
-        if self.x > (500 - self.r):
-            self.x = 500 - self.r
+        if self.x > (500 - self.r*0.5):
+            self.x = 500 - self.r*0.5
             self.dx = 0
             arcade.play_sound(self.wallhit,1)
-        if self.y > (500 - self.r):
-            self.y = 500 - self.r
+        if self.y > (500 - self.r*0.5):
+            self.y = 500 - self.r*0.5
             self.dy = 0
             arcade.play_sound(self.wallhit, 1)
-        if self.y < (0 + self.r):
-            self.y = 0 + self.r
+        if self.y < (0 + self.r*0.5):
+            self.y = 0 + self.r*0.5
             self.dy = 0
             arcade.play_sound(self.wallhit, 1)
-        if self.x < (0 + self.r):
-            self.x = 0 + self.r
+        if self.x < (0 + self.r*0.5):
+            self.x = 0 + self.r*0.5
             self.dx = 0
             arcade.play_sound(self.wallhit, 1)
 
@@ -117,9 +120,9 @@ class MyGame(arcade.Window):
 
 
         self.box_list = []
-        box1 = Box(200,250,24,30,arcade.color.BLUE,"arrows")
+        box1 = Box(200,250,4,30,arcade.color.BLUE,"arrows")
         self.box_list.append(box1)
-        box2 = Box(300,250,18,30,arcade.color.RED,"wasd")
+        box2 = Box(300,250,3,30,arcade.color.RED,"wasd")
         self.box_list.append(box2)
 
 
