@@ -44,7 +44,7 @@ class Player():
 
         self.x += self.dx
         self.y += self.dy
-        self.dy += ((self.grav/60) - (coinnum * 0.05))
+        self.dy += ((self.grav/60) - (coinnum * 0.03))
 
         self.tilt = -3 * self.dy
 
@@ -125,6 +125,18 @@ class Backround():
         if self.x < -200:
             self.x = random.randint(700,900)
 
+class Text():
+    def __init__(self, speed):
+        self.speed = speed
+        self.x = 200
+        self.y = 200
+
+    def draw(self):
+        arcade.draw_text("Space: Flap \n R: Restart",self.x,self.y,arcade.color.BLACK )
+
+    def update(self):
+        self.x += self.speed
+
 
 
 
@@ -135,6 +147,8 @@ class MyGame(arcade.Window):
         arcade.set_background_color(arcade.color.SKY_BLUE)
 
         self.player1 = Player(200, 250, 4, 30, arcade.color.BLUE, "arrows",-3.5)
+
+        self.intructions = Text(-1)
 
         self.backlist = []
         for i in range(25):
@@ -166,6 +180,8 @@ class MyGame(arcade.Window):
             if obj.x < 520 and obj.x > -20:
                 obj.drawworld()
 
+        self.intructions.draw()
+
 
     def on_update(self, dt):
 
@@ -192,6 +208,8 @@ class MyGame(arcade.Window):
                 if self.player1.y - self.player1.r < obj.y + 50 and abs(self.player1.x + (0.5 *self.player1.r) - obj.x) <= 10:
                     #print("coin")
                     obj.coincol()
+
+        self.intructions.update()
 
 
 
