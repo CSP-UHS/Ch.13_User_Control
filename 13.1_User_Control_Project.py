@@ -193,13 +193,13 @@ class MyGame(arcade.Window):
         for obj in self.worldlist:
             obj.updateworld()
             if obj.x >= 100 and obj.x <= 400:
-                if self.player1.y - self.player1.r < obj.y and abs(self.player1.x + (0.5 *self.player1.r) - obj.x) <= 10:
+                if self.player1.y - (self.player1.r * 0.5) < obj.y and abs(self.player1.x + (0.5 *self.player1.r) - obj.x) <= 10:
                     #print("loss")
                     obj.explode()
                     for pillar in self.worldlist:
                         pillar.loss()
 
-                if self.player1.y + self.player1.r > obj.y + 280 and abs(self.player1.x + (0.5* self.player1.r) - obj.x) <= 10:
+                if self.player1.y + (self.player1.r *0.5) > obj.y + 280 and abs(self.player1.x + (0.5* self.player1.r) - obj.x) <= 10:
                     #print("loss")
                     obj.explode()
                     for obj in self.worldlist:
