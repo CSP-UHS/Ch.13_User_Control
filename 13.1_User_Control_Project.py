@@ -63,6 +63,7 @@ class Render(arcade.Window):
         super().__init__(width, height, title)
         self.set_mouse_visible(False)
         arcade.set_background_color(arcade.color.WHITE)
+        self.auto_sound = arcade.load_sound("laser.mp3")
 
         self.crosshair = Crosshair(100, 100, 20, arcade.color.RED)
 
@@ -103,6 +104,7 @@ class Render(arcade.Window):
             if (self.crosshair.x >= self.minion_list[i].x - 80) and (self.crosshair.x <= self.minion_list[i].x + 80) \
                     and (self.crosshair.y >= self.minion_list[i].y - 80) and (self.crosshair.y <= self.minion_list[i].y + 80):
                 self.minion_list[i].health -= self.auto_damage       # then remove health from it
+                arcade.play_sound(self.auto_sound)
                 if self.minion_list[i].health <= 0:
                     self.cs_counter += 1            # if the minion dies from the click, then add 1 to cs counter
 
