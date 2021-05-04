@@ -32,7 +32,7 @@ class Box:
         self.dy = dy
         self.side = side
         self.c = c
-        #self.cat = arcade.load_sound("")
+        self.explosion = arcade.load_sound("explosion.mp3")
 
     def draw_box(self):
         arcade.draw_rectangle_filled(self.x, self.y, self.side, self.side, self.c)
@@ -44,19 +44,19 @@ class Box:
         if self.x < self.side/2:
             self.dx = 0
             self.x = self.side/2
-           # arcade.play_sound(self.cat)
+            arcade.play_sound(self.explosion)
         elif self.x > sw - self.side/2:
             self.dx = 0
             self.x = sw - self.side/2
-           # arcade.play_sound(self.cat)
+            arcade.play_sound(self.explosion)
         if self.y < self.side/2:
             self.dy = 0
             self.y = self.side/2
-           # arcade.play_sound(self.cat)
+            arcade.play_sound(self.explosion)
         elif self.y > sh - self.side/2:
             self.y = 0
             self.y = sh - self.side/2
-           # arcade.play_sound(self.cat)
+            arcade.play_sound(self.explosion)
 
 
 class MyGame(arcade.Window):
